@@ -30,3 +30,7 @@ ___
 Daftar Device yang didukung adalah
 - Android
 - Ios
+
+Daftar Fitur yang belum dimasukkan adalah
+- Password Encryption
+- BackButton dalam page AddCustomers
