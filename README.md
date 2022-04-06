@@ -1,16 +1,32 @@
 # bloc_advance
 
-A new Flutter project.
+bloc_advance merupakan project latihan yang diberikan untuk tingkat intermediate to advance selama melakukan internship di PT. IMFI. Dalam project ini terdapat beberapa fitur yakni 
 
-## Getting Started
+- Login
+- Register
+- Fetch Data from Local Database
+- Auto Login
+- Insert Data
+- Delete Data
+- Fetch Image From Galery
 
-This project is a starting point for a Flutter application.
+___
 
-A few resources to get you started if this is your first Flutter project:
+Project Ini saya buat dengan menggunakan bloc sebagai State Management dikarenakan tingkat project yang cukup kompleks sehingga membutuhkan State Management yang mumpuni dan powerful. Daftar package yang digunakan adalah sebagai berikut :
+- flutter_bloc
+- flutter_bloc
+- equatable
+- sqflite
+- freezed_annotation
+- hive
+- hive_flutter
+- file_picker
+- intl
+- build_runner
+- freezed
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+___
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Daftar Device yang didukung adalah
+- Android
+- Ios
