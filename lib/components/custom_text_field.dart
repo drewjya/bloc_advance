@@ -40,6 +40,67 @@ class CustomTextField extends StatelessWidget {
           filled: (enabled == null) ? false : (!enabled!),
           labelText: text,
         ),
+        obscureText: text == "Password",
+      ),
+    );
+  }
+}
+
+class PasswordTextField extends StatefulWidget {
+  const PasswordTextField(
+      {Key? key,
+      this.controller,
+      this.validator,
+      this.enabled,
+      this.text,
+      this.keyboardType,
+      this.autovalidateMode,
+      required this.icon,
+      this.onTap})
+      : super(key: key);
+
+  final TextEditingController? controller;
+  final String? Function(String? p1)? validator;
+  final bool? enabled;
+  final String? text;
+  final AutovalidateMode? autovalidateMode;
+  final TextInputType? keyboardType;
+  final VoidCallback? onTap;
+  final IconData icon;
+
+  @override
+  State<PasswordTextField> createState() => _PasswordTextFieldState();
+}
+
+class _PasswordTextFieldState extends State<PasswordTextField> {
+  bool flag = true;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
+      child: TextFormField(
+        controller: widget.controller,
+        validator: widget.validator,
+        enabled: widget.enabled,
+        autovalidateMode: widget.autovalidateMode,
+        keyboardType: widget.keyboardType,
+        decoration: InputDecoration(
+          suffixIcon: GestureDetector(
+            onTap: () {
+              flag = !flag;
+              setState(() {});
+            },
+            child: Icon(
+                flag ? Icons.remove_red_eye : Icons.remove_red_eye_outlined),
+          ),
+          prefixIcon: Icon(widget.icon),
+          fillColor: (widget.enabled != null && widget.enabled!)
+              ? null
+              : Colors.grey.shade300,
+          filled: (widget.enabled == null) ? false : (!widget.enabled!),
+          labelText: widget.text,
+        ),
+        obscureText: flag,
       ),
     );
   }

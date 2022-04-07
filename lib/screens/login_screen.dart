@@ -52,13 +52,15 @@ class LoginScreen extends StatelessWidget {
                       icon: Icons.person,
                       text: "Username",
                       controller: username,
-                      validator: Validator().checkEmpty,
+                      autovalidateMode: AutovalidateMode.always,
+                      validator: Validator(minLenth: 3).checkEmpty,
                     ),
-                    CustomTextField(
+                    PasswordTextField(
                       icon: Icons.key_outlined,
                       text: "Password",
                       controller: password,
-                      validator: Validator(minLenth: 1).validatePassword,
+                      autovalidateMode: AutovalidateMode.always,
+                      validator: Validator(minLenth: 6).validatePassword,
                     ),
                     TextButton(
                       onPressed: () {
