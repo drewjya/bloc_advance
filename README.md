@@ -34,3 +34,4 @@ Daftar Device yang didukung adalah
 ___
 Hal yang belum dilakukan adalah
 - Testing
+- Change BlocBuilder To BlocSelector or Make New Bloc for AppBar title
