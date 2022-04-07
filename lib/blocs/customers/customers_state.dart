@@ -8,6 +8,8 @@ class CustomersState with _$CustomersState {
       CustomersLoaded;
   const factory CustomersState.buttonVal({@Default(0) int value}) =
       CustomersButton;
+  const factory CustomersState.beforeVal({ required int value}) =
+      CustomersBefore;
   const factory CustomersState.addImage(
       {@Default(null) File? text,
       required int value,

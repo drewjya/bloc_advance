@@ -31,6 +31,12 @@ class _$CustomersEventTearOff {
     );
   }
 
+  BeforeCustomers before({required int value}) {
+    return BeforeCustomers(
+      value: value,
+    );
+  }
+
   AddCustomers addCustomers({required Customers customer}) {
     return AddCustomers(
       customer: customer,
@@ -59,6 +65,7 @@ mixin _$CustomersEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(List<CustomerReceive> customers) loadCustomers,
     required TResult Function(int value) buttonState,
+    required TResult Function(int value) before,
     required TResult Function(Customers customer) addCustomers,
     required TResult Function(int value) addPicture,
     required TResult Function(CustomerReceive customerReceive) deleteCustomers,
@@ -68,6 +75,7 @@ mixin _$CustomersEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(List<CustomerReceive> customers)? loadCustomers,
     TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
     TResult Function(Customers customer)? addCustomers,
     TResult Function(int value)? addPicture,
     TResult Function(CustomerReceive customerReceive)? deleteCustomers,
@@ -77,6 +85,7 @@ mixin _$CustomersEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<CustomerReceive> customers)? loadCustomers,
     TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
     TResult Function(Customers customer)? addCustomers,
     TResult Function(int value)? addPicture,
     TResult Function(CustomerReceive customerReceive)? deleteCustomers,
@@ -87,6 +96,7 @@ mixin _$CustomersEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadCustomers value) loadCustomers,
     required TResult Function(ButtonCustomers value) buttonState,
+    required TResult Function(BeforeCustomers value) before,
     required TResult Function(AddCustomers value) addCustomers,
     required TResult Function(AddPicture value) addPicture,
     required TResult Function(DeleteCustomer value) deleteCustomers,
@@ -96,6 +106,7 @@ mixin _$CustomersEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(LoadCustomers value)? loadCustomers,
     TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
     TResult Function(AddCustomers value)? addCustomers,
     TResult Function(AddPicture value)? addPicture,
     TResult Function(DeleteCustomer value)? deleteCustomers,
@@ -105,6 +116,7 @@ mixin _$CustomersEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadCustomers value)? loadCustomers,
     TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
     TResult Function(AddCustomers value)? addCustomers,
     TResult Function(AddPicture value)? addPicture,
     TResult Function(DeleteCustomer value)? deleteCustomers,
@@ -198,6 +210,7 @@ class _$LoadCustomers implements LoadCustomers {
   TResult when<TResult extends Object?>({
     required TResult Function(List<CustomerReceive> customers) loadCustomers,
     required TResult Function(int value) buttonState,
+    required TResult Function(int value) before,
     required TResult Function(Customers customer) addCustomers,
     required TResult Function(int value) addPicture,
     required TResult Function(CustomerReceive customerReceive) deleteCustomers,
@@ -210,6 +223,7 @@ class _$LoadCustomers implements LoadCustomers {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(List<CustomerReceive> customers)? loadCustomers,
     TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
     TResult Function(Customers customer)? addCustomers,
     TResult Function(int value)? addPicture,
     TResult Function(CustomerReceive customerReceive)? deleteCustomers,
@@ -222,6 +236,7 @@ class _$LoadCustomers implements LoadCustomers {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<CustomerReceive> customers)? loadCustomers,
     TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
     TResult Function(Customers customer)? addCustomers,
     TResult Function(int value)? addPicture,
     TResult Function(CustomerReceive customerReceive)? deleteCustomers,
@@ -238,6 +253,7 @@ class _$LoadCustomers implements LoadCustomers {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadCustomers value) loadCustomers,
     required TResult Function(ButtonCustomers value) buttonState,
+    required TResult Function(BeforeCustomers value) before,
     required TResult Function(AddCustomers value) addCustomers,
     required TResult Function(AddPicture value) addPicture,
     required TResult Function(DeleteCustomer value) deleteCustomers,
@@ -250,6 +266,7 @@ class _$LoadCustomers implements LoadCustomers {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(LoadCustomers value)? loadCustomers,
     TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
     TResult Function(AddCustomers value)? addCustomers,
     TResult Function(AddPicture value)? addPicture,
     TResult Function(DeleteCustomer value)? deleteCustomers,
@@ -262,6 +279,7 @@ class _$LoadCustomers implements LoadCustomers {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadCustomers value)? loadCustomers,
     TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
     TResult Function(AddCustomers value)? addCustomers,
     TResult Function(AddPicture value)? addPicture,
     TResult Function(DeleteCustomer value)? deleteCustomers,
@@ -352,6 +370,7 @@ class _$ButtonCustomers implements ButtonCustomers {
   TResult when<TResult extends Object?>({
     required TResult Function(List<CustomerReceive> customers) loadCustomers,
     required TResult Function(int value) buttonState,
+    required TResult Function(int value) before,
     required TResult Function(Customers customer) addCustomers,
     required TResult Function(int value) addPicture,
     required TResult Function(CustomerReceive customerReceive) deleteCustomers,
@@ -364,6 +383,7 @@ class _$ButtonCustomers implements ButtonCustomers {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(List<CustomerReceive> customers)? loadCustomers,
     TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
     TResult Function(Customers customer)? addCustomers,
     TResult Function(int value)? addPicture,
     TResult Function(CustomerReceive customerReceive)? deleteCustomers,
@@ -376,6 +396,7 @@ class _$ButtonCustomers implements ButtonCustomers {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<CustomerReceive> customers)? loadCustomers,
     TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
     TResult Function(Customers customer)? addCustomers,
     TResult Function(int value)? addPicture,
     TResult Function(CustomerReceive customerReceive)? deleteCustomers,
@@ -392,6 +413,7 @@ class _$ButtonCustomers implements ButtonCustomers {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadCustomers value) loadCustomers,
     required TResult Function(ButtonCustomers value) buttonState,
+    required TResult Function(BeforeCustomers value) before,
     required TResult Function(AddCustomers value) addCustomers,
     required TResult Function(AddPicture value) addPicture,
     required TResult Function(DeleteCustomer value) deleteCustomers,
@@ -404,6 +426,7 @@ class _$ButtonCustomers implements ButtonCustomers {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(LoadCustomers value)? loadCustomers,
     TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
     TResult Function(AddCustomers value)? addCustomers,
     TResult Function(AddPicture value)? addPicture,
     TResult Function(DeleteCustomer value)? deleteCustomers,
@@ -416,6 +439,7 @@ class _$ButtonCustomers implements ButtonCustomers {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadCustomers value)? loadCustomers,
     TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
     TResult Function(AddCustomers value)? addCustomers,
     TResult Function(AddPicture value)? addPicture,
     TResult Function(DeleteCustomer value)? deleteCustomers,
@@ -434,6 +458,164 @@ abstract class ButtonCustomers implements CustomersEvent {
   int get value;
   @JsonKey(ignore: true)
   $ButtonCustomersCopyWith<ButtonCustomers> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BeforeCustomersCopyWith<$Res> {
+  factory $BeforeCustomersCopyWith(
+          BeforeCustomers value, $Res Function(BeforeCustomers) then) =
+      _$BeforeCustomersCopyWithImpl<$Res>;
+  $Res call({int value});
+}
+
+/// @nodoc
+class _$BeforeCustomersCopyWithImpl<$Res>
+    extends _$CustomersEventCopyWithImpl<$Res>
+    implements $BeforeCustomersCopyWith<$Res> {
+  _$BeforeCustomersCopyWithImpl(
+      BeforeCustomers _value, $Res Function(BeforeCustomers) _then)
+      : super(_value, (v) => _then(v as BeforeCustomers));
+
+  @override
+  BeforeCustomers get _value => super._value as BeforeCustomers;
+
+  @override
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(BeforeCustomers(
+      value: value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BeforeCustomers implements BeforeCustomers {
+  const _$BeforeCustomers({required this.value});
+
+  @override
+  final int value;
+
+  @override
+  String toString() {
+    return 'CustomersEvent.before(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is BeforeCustomers &&
+            const DeepCollectionEquality().equals(other.value, value));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+
+  @JsonKey(ignore: true)
+  @override
+  $BeforeCustomersCopyWith<BeforeCustomers> get copyWith =>
+      _$BeforeCustomersCopyWithImpl<BeforeCustomers>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<CustomerReceive> customers) loadCustomers,
+    required TResult Function(int value) buttonState,
+    required TResult Function(int value) before,
+    required TResult Function(Customers customer) addCustomers,
+    required TResult Function(int value) addPicture,
+    required TResult Function(CustomerReceive customerReceive) deleteCustomers,
+  }) {
+    return before(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(List<CustomerReceive> customers)? loadCustomers,
+    TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
+    TResult Function(Customers customer)? addCustomers,
+    TResult Function(int value)? addPicture,
+    TResult Function(CustomerReceive customerReceive)? deleteCustomers,
+  }) {
+    return before?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<CustomerReceive> customers)? loadCustomers,
+    TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
+    TResult Function(Customers customer)? addCustomers,
+    TResult Function(int value)? addPicture,
+    TResult Function(CustomerReceive customerReceive)? deleteCustomers,
+    required TResult orElse(),
+  }) {
+    if (before != null) {
+      return before(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadCustomers value) loadCustomers,
+    required TResult Function(ButtonCustomers value) buttonState,
+    required TResult Function(BeforeCustomers value) before,
+    required TResult Function(AddCustomers value) addCustomers,
+    required TResult Function(AddPicture value) addPicture,
+    required TResult Function(DeleteCustomer value) deleteCustomers,
+  }) {
+    return before(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(LoadCustomers value)? loadCustomers,
+    TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
+    TResult Function(AddCustomers value)? addCustomers,
+    TResult Function(AddPicture value)? addPicture,
+    TResult Function(DeleteCustomer value)? deleteCustomers,
+  }) {
+    return before?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadCustomers value)? loadCustomers,
+    TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
+    TResult Function(AddCustomers value)? addCustomers,
+    TResult Function(AddPicture value)? addPicture,
+    TResult Function(DeleteCustomer value)? deleteCustomers,
+    required TResult orElse(),
+  }) {
+    if (before != null) {
+      return before(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BeforeCustomers implements CustomersEvent {
+  const factory BeforeCustomers({required int value}) = _$BeforeCustomers;
+
+  int get value;
+  @JsonKey(ignore: true)
+  $BeforeCustomersCopyWith<BeforeCustomers> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -504,6 +686,7 @@ class _$AddCustomers implements AddCustomers {
   TResult when<TResult extends Object?>({
     required TResult Function(List<CustomerReceive> customers) loadCustomers,
     required TResult Function(int value) buttonState,
+    required TResult Function(int value) before,
     required TResult Function(Customers customer) addCustomers,
     required TResult Function(int value) addPicture,
     required TResult Function(CustomerReceive customerReceive) deleteCustomers,
@@ -516,6 +699,7 @@ class _$AddCustomers implements AddCustomers {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(List<CustomerReceive> customers)? loadCustomers,
     TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
     TResult Function(Customers customer)? addCustomers,
     TResult Function(int value)? addPicture,
     TResult Function(CustomerReceive customerReceive)? deleteCustomers,
@@ -528,6 +712,7 @@ class _$AddCustomers implements AddCustomers {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<CustomerReceive> customers)? loadCustomers,
     TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
     TResult Function(Customers customer)? addCustomers,
     TResult Function(int value)? addPicture,
     TResult Function(CustomerReceive customerReceive)? deleteCustomers,
@@ -544,6 +729,7 @@ class _$AddCustomers implements AddCustomers {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadCustomers value) loadCustomers,
     required TResult Function(ButtonCustomers value) buttonState,
+    required TResult Function(BeforeCustomers value) before,
     required TResult Function(AddCustomers value) addCustomers,
     required TResult Function(AddPicture value) addPicture,
     required TResult Function(DeleteCustomer value) deleteCustomers,
@@ -556,6 +742,7 @@ class _$AddCustomers implements AddCustomers {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(LoadCustomers value)? loadCustomers,
     TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
     TResult Function(AddCustomers value)? addCustomers,
     TResult Function(AddPicture value)? addPicture,
     TResult Function(DeleteCustomer value)? deleteCustomers,
@@ -568,6 +755,7 @@ class _$AddCustomers implements AddCustomers {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadCustomers value)? loadCustomers,
     TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
     TResult Function(AddCustomers value)? addCustomers,
     TResult Function(AddPicture value)? addPicture,
     TResult Function(DeleteCustomer value)? deleteCustomers,
@@ -654,6 +842,7 @@ class _$AddPicture implements AddPicture {
   TResult when<TResult extends Object?>({
     required TResult Function(List<CustomerReceive> customers) loadCustomers,
     required TResult Function(int value) buttonState,
+    required TResult Function(int value) before,
     required TResult Function(Customers customer) addCustomers,
     required TResult Function(int value) addPicture,
     required TResult Function(CustomerReceive customerReceive) deleteCustomers,
@@ -666,6 +855,7 @@ class _$AddPicture implements AddPicture {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(List<CustomerReceive> customers)? loadCustomers,
     TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
     TResult Function(Customers customer)? addCustomers,
     TResult Function(int value)? addPicture,
     TResult Function(CustomerReceive customerReceive)? deleteCustomers,
@@ -678,6 +868,7 @@ class _$AddPicture implements AddPicture {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<CustomerReceive> customers)? loadCustomers,
     TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
     TResult Function(Customers customer)? addCustomers,
     TResult Function(int value)? addPicture,
     TResult Function(CustomerReceive customerReceive)? deleteCustomers,
@@ -694,6 +885,7 @@ class _$AddPicture implements AddPicture {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadCustomers value) loadCustomers,
     required TResult Function(ButtonCustomers value) buttonState,
+    required TResult Function(BeforeCustomers value) before,
     required TResult Function(AddCustomers value) addCustomers,
     required TResult Function(AddPicture value) addPicture,
     required TResult Function(DeleteCustomer value) deleteCustomers,
@@ -706,6 +898,7 @@ class _$AddPicture implements AddPicture {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(LoadCustomers value)? loadCustomers,
     TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
     TResult Function(AddCustomers value)? addCustomers,
     TResult Function(AddPicture value)? addPicture,
     TResult Function(DeleteCustomer value)? deleteCustomers,
@@ -718,6 +911,7 @@ class _$AddPicture implements AddPicture {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadCustomers value)? loadCustomers,
     TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
     TResult Function(AddCustomers value)? addCustomers,
     TResult Function(AddPicture value)? addPicture,
     TResult Function(DeleteCustomer value)? deleteCustomers,
@@ -807,6 +1001,7 @@ class _$DeleteCustomer implements DeleteCustomer {
   TResult when<TResult extends Object?>({
     required TResult Function(List<CustomerReceive> customers) loadCustomers,
     required TResult Function(int value) buttonState,
+    required TResult Function(int value) before,
     required TResult Function(Customers customer) addCustomers,
     required TResult Function(int value) addPicture,
     required TResult Function(CustomerReceive customerReceive) deleteCustomers,
@@ -819,6 +1014,7 @@ class _$DeleteCustomer implements DeleteCustomer {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(List<CustomerReceive> customers)? loadCustomers,
     TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
     TResult Function(Customers customer)? addCustomers,
     TResult Function(int value)? addPicture,
     TResult Function(CustomerReceive customerReceive)? deleteCustomers,
@@ -831,6 +1027,7 @@ class _$DeleteCustomer implements DeleteCustomer {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<CustomerReceive> customers)? loadCustomers,
     TResult Function(int value)? buttonState,
+    TResult Function(int value)? before,
     TResult Function(Customers customer)? addCustomers,
     TResult Function(int value)? addPicture,
     TResult Function(CustomerReceive customerReceive)? deleteCustomers,
@@ -847,6 +1044,7 @@ class _$DeleteCustomer implements DeleteCustomer {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadCustomers value) loadCustomers,
     required TResult Function(ButtonCustomers value) buttonState,
+    required TResult Function(BeforeCustomers value) before,
     required TResult Function(AddCustomers value) addCustomers,
     required TResult Function(AddPicture value) addPicture,
     required TResult Function(DeleteCustomer value) deleteCustomers,
@@ -859,6 +1057,7 @@ class _$DeleteCustomer implements DeleteCustomer {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(LoadCustomers value)? loadCustomers,
     TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
     TResult Function(AddCustomers value)? addCustomers,
     TResult Function(AddPicture value)? addPicture,
     TResult Function(DeleteCustomer value)? deleteCustomers,
@@ -871,6 +1070,7 @@ class _$DeleteCustomer implements DeleteCustomer {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadCustomers value)? loadCustomers,
     TResult Function(ButtonCustomers value)? buttonState,
+    TResult Function(BeforeCustomers value)? before,
     TResult Function(AddCustomers value)? addCustomers,
     TResult Function(AddPicture value)? addPicture,
     TResult Function(DeleteCustomer value)? deleteCustomers,
@@ -914,6 +1114,12 @@ class _$CustomersStateTearOff {
     );
   }
 
+  CustomersBefore beforeVal({required int value}) {
+    return CustomersBefore(
+      value: value,
+    );
+  }
+
   CustomersAddButton addImage(
       {File? text = null, required int value, String? path = null}) {
     return CustomersAddButton(
@@ -944,6 +1150,7 @@ mixin _$CustomersState {
     required TResult Function() initial,
     required TResult Function(List<CustomerReceive> customers) loaded,
     required TResult Function(int value) buttonVal,
+    required TResult Function(int value) beforeVal,
     required TResult Function(File? text, int value, String? path) addImage,
     required TResult Function(bool failed) failed,
     required TResult Function() success,
@@ -954,6 +1161,7 @@ mixin _$CustomersState {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -964,6 +1172,7 @@ mixin _$CustomersState {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -975,6 +1184,7 @@ mixin _$CustomersState {
     required TResult Function(CustomersLoading value) initial,
     required TResult Function(CustomersLoaded value) loaded,
     required TResult Function(CustomersButton value) buttonVal,
+    required TResult Function(CustomersBefore value) beforeVal,
     required TResult Function(CustomersAddButton value) addImage,
     required TResult Function(CustomersFailed value) failed,
     required TResult Function(CustomersSuccess value) success,
@@ -985,6 +1195,7 @@ mixin _$CustomersState {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,
@@ -995,6 +1206,7 @@ mixin _$CustomersState {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,
@@ -1064,6 +1276,7 @@ class _$CustomersLoading implements CustomersLoading {
     required TResult Function() initial,
     required TResult Function(List<CustomerReceive> customers) loaded,
     required TResult Function(int value) buttonVal,
+    required TResult Function(int value) beforeVal,
     required TResult Function(File? text, int value, String? path) addImage,
     required TResult Function(bool failed) failed,
     required TResult Function() success,
@@ -1077,6 +1290,7 @@ class _$CustomersLoading implements CustomersLoading {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -1090,6 +1304,7 @@ class _$CustomersLoading implements CustomersLoading {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -1107,6 +1322,7 @@ class _$CustomersLoading implements CustomersLoading {
     required TResult Function(CustomersLoading value) initial,
     required TResult Function(CustomersLoaded value) loaded,
     required TResult Function(CustomersButton value) buttonVal,
+    required TResult Function(CustomersBefore value) beforeVal,
     required TResult Function(CustomersAddButton value) addImage,
     required TResult Function(CustomersFailed value) failed,
     required TResult Function(CustomersSuccess value) success,
@@ -1120,6 +1336,7 @@ class _$CustomersLoading implements CustomersLoading {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,
@@ -1133,6 +1350,7 @@ class _$CustomersLoading implements CustomersLoading {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,
@@ -1218,6 +1436,7 @@ class _$CustomersLoaded implements CustomersLoaded {
     required TResult Function() initial,
     required TResult Function(List<CustomerReceive> customers) loaded,
     required TResult Function(int value) buttonVal,
+    required TResult Function(int value) beforeVal,
     required TResult Function(File? text, int value, String? path) addImage,
     required TResult Function(bool failed) failed,
     required TResult Function() success,
@@ -1231,6 +1450,7 @@ class _$CustomersLoaded implements CustomersLoaded {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -1244,6 +1464,7 @@ class _$CustomersLoaded implements CustomersLoaded {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -1261,6 +1482,7 @@ class _$CustomersLoaded implements CustomersLoaded {
     required TResult Function(CustomersLoading value) initial,
     required TResult Function(CustomersLoaded value) loaded,
     required TResult Function(CustomersButton value) buttonVal,
+    required TResult Function(CustomersBefore value) beforeVal,
     required TResult Function(CustomersAddButton value) addImage,
     required TResult Function(CustomersFailed value) failed,
     required TResult Function(CustomersSuccess value) success,
@@ -1274,6 +1496,7 @@ class _$CustomersLoaded implements CustomersLoaded {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,
@@ -1287,6 +1510,7 @@ class _$CustomersLoaded implements CustomersLoaded {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,
@@ -1378,6 +1602,7 @@ class _$CustomersButton implements CustomersButton {
     required TResult Function() initial,
     required TResult Function(List<CustomerReceive> customers) loaded,
     required TResult Function(int value) buttonVal,
+    required TResult Function(int value) beforeVal,
     required TResult Function(File? text, int value, String? path) addImage,
     required TResult Function(bool failed) failed,
     required TResult Function() success,
@@ -1391,6 +1616,7 @@ class _$CustomersButton implements CustomersButton {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -1404,6 +1630,7 @@ class _$CustomersButton implements CustomersButton {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -1421,6 +1648,7 @@ class _$CustomersButton implements CustomersButton {
     required TResult Function(CustomersLoading value) initial,
     required TResult Function(CustomersLoaded value) loaded,
     required TResult Function(CustomersButton value) buttonVal,
+    required TResult Function(CustomersBefore value) beforeVal,
     required TResult Function(CustomersAddButton value) addImage,
     required TResult Function(CustomersFailed value) failed,
     required TResult Function(CustomersSuccess value) success,
@@ -1434,6 +1662,7 @@ class _$CustomersButton implements CustomersButton {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,
@@ -1447,6 +1676,7 @@ class _$CustomersButton implements CustomersButton {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,
@@ -1465,6 +1695,170 @@ abstract class CustomersButton implements CustomersState {
   int get value;
   @JsonKey(ignore: true)
   $CustomersButtonCopyWith<CustomersButton> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CustomersBeforeCopyWith<$Res> {
+  factory $CustomersBeforeCopyWith(
+          CustomersBefore value, $Res Function(CustomersBefore) then) =
+      _$CustomersBeforeCopyWithImpl<$Res>;
+  $Res call({int value});
+}
+
+/// @nodoc
+class _$CustomersBeforeCopyWithImpl<$Res>
+    extends _$CustomersStateCopyWithImpl<$Res>
+    implements $CustomersBeforeCopyWith<$Res> {
+  _$CustomersBeforeCopyWithImpl(
+      CustomersBefore _value, $Res Function(CustomersBefore) _then)
+      : super(_value, (v) => _then(v as CustomersBefore));
+
+  @override
+  CustomersBefore get _value => super._value as CustomersBefore;
+
+  @override
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(CustomersBefore(
+      value: value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CustomersBefore implements CustomersBefore {
+  const _$CustomersBefore({required this.value});
+
+  @override
+  final int value;
+
+  @override
+  String toString() {
+    return 'CustomersState.beforeVal(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CustomersBefore &&
+            const DeepCollectionEquality().equals(other.value, value));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+
+  @JsonKey(ignore: true)
+  @override
+  $CustomersBeforeCopyWith<CustomersBefore> get copyWith =>
+      _$CustomersBeforeCopyWithImpl<CustomersBefore>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(List<CustomerReceive> customers) loaded,
+    required TResult Function(int value) buttonVal,
+    required TResult Function(int value) beforeVal,
+    required TResult Function(File? text, int value, String? path) addImage,
+    required TResult Function(bool failed) failed,
+    required TResult Function() success,
+  }) {
+    return beforeVal(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<CustomerReceive> customers)? loaded,
+    TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
+    TResult Function(File? text, int value, String? path)? addImage,
+    TResult Function(bool failed)? failed,
+    TResult Function()? success,
+  }) {
+    return beforeVal?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<CustomerReceive> customers)? loaded,
+    TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
+    TResult Function(File? text, int value, String? path)? addImage,
+    TResult Function(bool failed)? failed,
+    TResult Function()? success,
+    required TResult orElse(),
+  }) {
+    if (beforeVal != null) {
+      return beforeVal(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomersLoading value) initial,
+    required TResult Function(CustomersLoaded value) loaded,
+    required TResult Function(CustomersButton value) buttonVal,
+    required TResult Function(CustomersBefore value) beforeVal,
+    required TResult Function(CustomersAddButton value) addImage,
+    required TResult Function(CustomersFailed value) failed,
+    required TResult Function(CustomersSuccess value) success,
+  }) {
+    return beforeVal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CustomersLoading value)? initial,
+    TResult Function(CustomersLoaded value)? loaded,
+    TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
+    TResult Function(CustomersAddButton value)? addImage,
+    TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
+  }) {
+    return beforeVal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomersLoading value)? initial,
+    TResult Function(CustomersLoaded value)? loaded,
+    TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
+    TResult Function(CustomersAddButton value)? addImage,
+    TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
+    required TResult orElse(),
+  }) {
+    if (beforeVal != null) {
+      return beforeVal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CustomersBefore implements CustomersState {
+  const factory CustomersBefore({required int value}) = _$CustomersBefore;
+
+  int get value;
+  @JsonKey(ignore: true)
+  $CustomersBeforeCopyWith<CustomersBefore> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1558,6 +1952,7 @@ class _$CustomersAddButton implements CustomersAddButton {
     required TResult Function() initial,
     required TResult Function(List<CustomerReceive> customers) loaded,
     required TResult Function(int value) buttonVal,
+    required TResult Function(int value) beforeVal,
     required TResult Function(File? text, int value, String? path) addImage,
     required TResult Function(bool failed) failed,
     required TResult Function() success,
@@ -1571,6 +1966,7 @@ class _$CustomersAddButton implements CustomersAddButton {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -1584,6 +1980,7 @@ class _$CustomersAddButton implements CustomersAddButton {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -1601,6 +1998,7 @@ class _$CustomersAddButton implements CustomersAddButton {
     required TResult Function(CustomersLoading value) initial,
     required TResult Function(CustomersLoaded value) loaded,
     required TResult Function(CustomersButton value) buttonVal,
+    required TResult Function(CustomersBefore value) beforeVal,
     required TResult Function(CustomersAddButton value) addImage,
     required TResult Function(CustomersFailed value) failed,
     required TResult Function(CustomersSuccess value) success,
@@ -1614,6 +2012,7 @@ class _$CustomersAddButton implements CustomersAddButton {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,
@@ -1627,6 +2026,7 @@ class _$CustomersAddButton implements CustomersAddButton {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,
@@ -1720,6 +2120,7 @@ class _$CustomersFailed implements CustomersFailed {
     required TResult Function() initial,
     required TResult Function(List<CustomerReceive> customers) loaded,
     required TResult Function(int value) buttonVal,
+    required TResult Function(int value) beforeVal,
     required TResult Function(File? text, int value, String? path) addImage,
     required TResult Function(bool failed) failed,
     required TResult Function() success,
@@ -1733,6 +2134,7 @@ class _$CustomersFailed implements CustomersFailed {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -1746,6 +2148,7 @@ class _$CustomersFailed implements CustomersFailed {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -1763,6 +2166,7 @@ class _$CustomersFailed implements CustomersFailed {
     required TResult Function(CustomersLoading value) initial,
     required TResult Function(CustomersLoaded value) loaded,
     required TResult Function(CustomersButton value) buttonVal,
+    required TResult Function(CustomersBefore value) beforeVal,
     required TResult Function(CustomersAddButton value) addImage,
     required TResult Function(CustomersFailed value) failed,
     required TResult Function(CustomersSuccess value) success,
@@ -1776,6 +2180,7 @@ class _$CustomersFailed implements CustomersFailed {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,
@@ -1789,6 +2194,7 @@ class _$CustomersFailed implements CustomersFailed {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,
@@ -1854,6 +2260,7 @@ class _$CustomersSuccess implements CustomersSuccess {
     required TResult Function() initial,
     required TResult Function(List<CustomerReceive> customers) loaded,
     required TResult Function(int value) buttonVal,
+    required TResult Function(int value) beforeVal,
     required TResult Function(File? text, int value, String? path) addImage,
     required TResult Function(bool failed) failed,
     required TResult Function() success,
@@ -1867,6 +2274,7 @@ class _$CustomersSuccess implements CustomersSuccess {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -1880,6 +2288,7 @@ class _$CustomersSuccess implements CustomersSuccess {
     TResult Function()? initial,
     TResult Function(List<CustomerReceive> customers)? loaded,
     TResult Function(int value)? buttonVal,
+    TResult Function(int value)? beforeVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
     TResult Function()? success,
@@ -1897,6 +2306,7 @@ class _$CustomersSuccess implements CustomersSuccess {
     required TResult Function(CustomersLoading value) initial,
     required TResult Function(CustomersLoaded value) loaded,
     required TResult Function(CustomersButton value) buttonVal,
+    required TResult Function(CustomersBefore value) beforeVal,
     required TResult Function(CustomersAddButton value) addImage,
     required TResult Function(CustomersFailed value) failed,
     required TResult Function(CustomersSuccess value) success,
@@ -1910,6 +2320,7 @@ class _$CustomersSuccess implements CustomersSuccess {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,
@@ -1923,6 +2334,7 @@ class _$CustomersSuccess implements CustomersSuccess {
     TResult Function(CustomersLoading value)? initial,
     TResult Function(CustomersLoaded value)? loaded,
     TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersBefore value)? beforeVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
     TResult Function(CustomersSuccess value)? success,

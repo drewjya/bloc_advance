@@ -70,12 +70,27 @@ class AddScreen extends StatelessWidget {
                 return Text(title[0]);
               }
             }),
-            leading: IconButton(
-                onPressed: () {
-                  context.read<CustomersBloc>().add(const LoadCustomers());
-                },
-                icon: const Icon(Icons.arrow_back)),
-            // automaticallyImplyLeading: false,
+            leading: BlocBuilder<CustomersBloc, CustomersState>(
+              builder: (context, state) {
+                return IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () {
+                    if (state is CustomersButton) {
+                      if (state.value != 1) {
+                        context
+                            .read<CustomersBloc>()
+                            .add(BeforeCustomers(value: state.value));
+                      } else {
+                        context
+                            .read<CustomersBloc>()
+                            .add(const LoadCustomers());
+                      }
+                    }
+                  },
+                );
+              },
+            ),
+            automaticallyImplyLeading: false,
           ),
 
           body: Padding(

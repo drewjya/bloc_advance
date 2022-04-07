@@ -18,9 +18,17 @@ class CustomersBloc extends Bloc<CustomersEvent, CustomersState> {
     on<ButtonCustomers>(_onButton);
     on<AddPicture>(_onAddPicture);
     on<DeleteCustomer>(_onCustomerDelete);
+    on<BeforeCustomers>(_onBefore);
     // on<UpdateCustomers>(_onUpdateCustomers);
     // on<DeleteCustomers>(_onDeleteCustomers);
   }
+
+  void _onBefore(BeforeCustomers event, Emitter<CustomersState> emit) {
+    if (event.value != 1) {
+      emit(CustomersButton(value: event.value - 1));
+    }
+  }
+
   void _onButton(ButtonCustomers event, Emitter<CustomersState> emit) async {
     if (event.value != 3) {
       emit(const CustomersLoading());

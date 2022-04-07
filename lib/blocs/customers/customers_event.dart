@@ -7,6 +7,8 @@ class CustomersEvent with _$CustomersEvent {
       LoadCustomers;
   const factory CustomersEvent.buttonState({@Default(1) int value}) =
       ButtonCustomers;
+  const factory CustomersEvent.before({required int value}) =
+      BeforeCustomers;
   const factory CustomersEvent.addCustomers({required Customers customer}) =
       AddCustomers;
   const factory CustomersEvent.addPicture({

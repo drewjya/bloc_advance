@@ -30,10 +30,6 @@ ___
 Daftar Device yang didukung adalah
 - Android
 - Ios
-___
-
-Daftar Fitur yang belum dimasukkan adalah
-- BackButton dalam page AddCustomers
 
 ___
 Hal yang belum dilakukan adalah
