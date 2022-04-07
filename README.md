@@ -33,7 +33,6 @@ Daftar Device yang didukung adalah
 ___
 
 Daftar Fitur yang belum dimasukkan adalah
-- Password Encryption
 - BackButton dalam page AddCustomers
 
 ___
