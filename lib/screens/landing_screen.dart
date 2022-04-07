@@ -38,7 +38,7 @@ class LandingScreen extends StatelessWidget {
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
-                          "https://media-exp1.licdn.com/dms/image/C4E0BAQEPj5NP5eyFhg/company-logo_200_200/0/1594969684401?e=2147483647&v=beta&t=rYcLvlDJHmmm4WXnGWdf1Qn56ANtJ_jb-hkOZqVemiA"),
+                          "https://cdn.discordapp.com/attachments/914874385834344500/961534469322461264/download.jpeg"),
                     ),
                   ),
                 ),
