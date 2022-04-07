@@ -12,12 +12,10 @@ class LandingScreen extends StatelessWidget {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthSuccess) {
-            Future.delayed(const Duration(milliseconds: 450)).then((value) {
-              Navigator.pushReplacementNamed(
-                context,
-                NameRoute.welcome,
-              );
-            });
+            Navigator.pushReplacementNamed(
+              context,
+              NameRoute.welcome,
+            );
           }
         },
         builder: (_, state) => Center(

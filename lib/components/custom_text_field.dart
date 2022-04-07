@@ -142,7 +142,7 @@ class _DatePickerState extends State<DatePicker> {
             : null,
         decoration: InputDecoration(
           fillColor: (widget.enabled) ? null : Colors.grey.shade300,
-          filled: (widget.enabled == null) ? false : (!widget.enabled),
+          filled: (widget.enabled) ? false : (!widget.enabled),
           labelText: "Tanggal Lahir",
           border: OutlineInputBorder(
             borderSide: BorderSide(

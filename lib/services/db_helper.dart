@@ -55,7 +55,7 @@ class DbHelper {
 
   static Future delete(CustomerReceive customer) async {
     final db = await openDb();
-    var result = await db.delete(CustomersQuery.tableName,
+    await db.delete(CustomersQuery.tableName,
         where: "customerId=?", whereArgs: [customer.customerId]);
   }
 }
