@@ -29,7 +29,6 @@ class LoginScreen extends StatelessWidget {
                 duration: const Duration(milliseconds: 500),
               ),
             );
-
             Navigator.pushNamedAndRemoveUntil(
                 context, NameRoute.welcome, (route) => false);
           } else if (state is AuthFailed) {

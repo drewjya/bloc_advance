@@ -22,6 +22,7 @@ class LandingScreen extends StatelessWidget {
             Navigator.pushReplacementNamed(
               context,
               NameRoute.welcome,
+              
             );
           }
         },
