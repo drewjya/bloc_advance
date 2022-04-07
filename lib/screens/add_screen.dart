@@ -31,6 +31,7 @@ class AddScreen extends HookWidget {
     final TextEditingController pictureLoc = useTextEditingController();
     final key1 = GlobalKey<FormState>();
     final key2 = GlobalKey<FormState>();
+    final key3 = GlobalKey<FormState>();
 
     return BlocListener<CustomersBloc, CustomersState>(
       listener: (context, state) {
@@ -125,6 +126,7 @@ class AddScreen extends HookWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 50.0),
                           child: ImagePicker(
+                            keyForm: key3,
                             controller: pictureLoc,
                           ),
                         ),
@@ -152,7 +154,7 @@ class AddScreen extends HookWidget {
                   context.read<ButtonBloc>().add(
                         ButtonPressedNext(index: state.initValue),
                       );
-                } else {
+                } else if (state.initValue == 3 && pictureLoc.text.isNotEmpty) {
                   context.read<CustomersBloc>().add(
                         AddCustomers(
                           customer: Customers(

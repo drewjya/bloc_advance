@@ -8,10 +8,12 @@ class ImagePicker extends StatefulWidget {
 
   const ImagePicker({
     Key? key,
+    required this.keyForm,
     required this.controller,
   }) : super(key: key);
 
   final TextEditingController controller;
+  final GlobalKey<FormState> keyForm;
 
   @override
   State<ImagePicker> createState() => _ImagePickerState();
@@ -25,6 +27,7 @@ class _ImagePickerState extends State<ImagePicker> {
       height: 155,
       width: 400,
       child: FormField(
+        key: widget.keyForm,
         validator: (File? value) {
           if (widget.controller.text == "") {
             return "Please upload picture";
