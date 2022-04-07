@@ -27,11 +27,21 @@ class LandingScreen extends StatelessWidget {
         },
         builder: (_, state) => Center(
           child: SizedBox(
-            height: 100,
+            height: 300,
             width: 200,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                Container(
+                  width: 200,
+                  height: 200,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          "https://media-exp1.licdn.com/dms/image/C4E0BAQEPj5NP5eyFhg/company-logo_200_200/0/1594969684401?e=2147483647&v=beta&t=rYcLvlDJHmmm4WXnGWdf1Qn56ANtJ_jb-hkOZqVemiA"),
+                    ),
+                  ),
+                ),
                 TextButton(
                   onPressed: () =>
                       Navigator.pushNamed(context, NameRoute.login),
