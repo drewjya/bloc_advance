@@ -1,33 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class SliverCustomTextField extends StatelessWidget {
-  final String? text;
-  final bool? enabled;
-  final TextEditingController? controller;
-  final String? Function(String?)? validator;
-  final TextInputType? keyboardType;
-  const SliverCustomTextField(
-      {Key? key,
-      this.text,
-      this.enabled,
-      this.controller,
-      this.validator,
-      this.keyboardType})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: CustomTextField(
-          controller: controller,
-          validator: validator,
-          enabled: enabled,
-          text: text),
-    );
-  }
-}
-
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
       {Key? key,
@@ -37,6 +10,7 @@ class CustomTextField extends StatelessWidget {
       this.text,
       this.keyboardType,
       this.autovalidateMode,
+      required this.icon,
       this.onTap})
       : super(key: key);
 
@@ -47,6 +21,7 @@ class CustomTextField extends StatelessWidget {
   final AutovalidateMode? autovalidateMode;
   final TextInputType? keyboardType;
   final VoidCallback? onTap;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -59,34 +34,11 @@ class CustomTextField extends StatelessWidget {
         autovalidateMode: autovalidateMode,
         keyboardType: keyboardType,
         decoration: InputDecoration(
+          prefixIcon: Icon(icon),
           fillColor:
               (enabled != null && enabled!) ? null : Colors.grey.shade300,
           filled: (enabled == null) ? false : (!enabled!),
           labelText: text,
-          border: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 2,
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 2,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 2,
-            ),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 2,
-            ),
-          ),
         ),
       ),
     );
@@ -141,33 +93,10 @@ class _DatePickerState extends State<DatePicker> {
               }
             : null,
         decoration: InputDecoration(
+          prefixIcon: const Icon(Icons.calendar_month),
           fillColor: (widget.enabled) ? null : Colors.grey.shade300,
           filled: (widget.enabled) ? false : (!widget.enabled),
           labelText: "Tanggal Lahir",
-          border: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 2,
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 2,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 2,
-            ),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 2,
-            ),
-          ),
         ),
       ),
     );

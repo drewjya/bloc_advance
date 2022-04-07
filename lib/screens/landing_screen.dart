@@ -11,7 +11,14 @@ class LandingScreen extends StatelessWidget {
     return Scaffold(
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is AuthSuccess) {
+          if (state is AuthAuto) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: const Text("Login Success"),
+                backgroundColor: Colors.greenAccent.shade700,
+                duration: const Duration(milliseconds: 500),
+              ),
+            );
             Navigator.pushReplacementNamed(
               context,
               NameRoute.welcome,

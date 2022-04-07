@@ -21,22 +21,24 @@ class LoginScreen extends StatelessWidget {
       ),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is AuthSuccess) {
-            Navigator.pushNamedAndRemoveUntil(
-              context,
-              NameRoute.welcome,
-              (route) => false,
+          if (state is AuthLoading) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: const Text("Login Success"),
+                backgroundColor: Colors.greenAccent.shade700,
+                duration: const Duration(milliseconds: 500),
+              ),
             );
-            // Navigator.pushNamedAndRemoveUntil(
-            //     context, NameRoute.welcome, (route) => false);
+
+            Navigator.pushNamedAndRemoveUntil(
+                context, NameRoute.welcome, (route) => false);
+          } else if (state is AuthFailed) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message ?? ''),
+              ),
+            );
           }
-          // if (state is AuthFailed) {
-          //   ScaffoldMessenger.of(context).showSnackBar(
-          //     SnackBar(
-          //       content: Text(state.message ?? ''),
-          //     ),
-          //   );
-          // }
         },
         builder: (context, state) {
           return SingleChildScrollView(
@@ -47,11 +49,13 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     CustomTextField(
+                      icon: Icons.person,
                       text: "Username",
                       controller: username,
                       validator: Validator().checkEmpty,
                     ),
                     CustomTextField(
+                      icon: Icons.key_outlined,
                       text: "Password",
                       controller: password,
                       validator: Validator(minLenth: 1).validatePassword,

@@ -7,15 +7,20 @@ class SessionHelper {
     var result = box.get('session');
     if (result != null) {
       return UserModel(
-          username: result["username"], password: result["password"]);
+          username: result["username"],
+          password: result["password"],
+          id: result["id"]);
     }
     return null;
   }
 
   static write(UserModel userModel) async {
     var box = await Hive.openBox('bloac_advance');
-    box.put('session',
-        {"username": userModel.username, "password": userModel.password});
+    box.put('session', {
+      "username": userModel.username,
+      "password": userModel.password,
+      "id": userModel.id
+    });
   }
 
   static logout() async {

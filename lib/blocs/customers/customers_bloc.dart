@@ -46,6 +46,7 @@ class CustomersBloc extends Bloc<CustomersEvent, CustomersState> {
   void _onAddCustomers(AddCustomers event, Emitter<CustomersState> emit) async {
     await DbHelper.createCustomer(event.customer);
     var retrieve = await DbHelper.getCustomers();
+    emit(const CustomersSuccess());
     emit(CustomersLoaded(customers: retrieve));
   }
 

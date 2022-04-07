@@ -21,8 +21,16 @@ class SignupScreen extends StatelessWidget {
       ),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is AuthSuccess) {
-            
+          if (state is AuthLoading) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: const Text("Signup Success"),
+                backgroundColor: Colors.greenAccent.shade700,
+                duration: const Duration(milliseconds: 500),
+                // dismissDirection: DismissDirection.horizontal,
+                // animation: Animation<2.0>,
+              ),
+            );
 
             Navigator.pushNamedAndRemoveUntil(
               context,
@@ -43,7 +51,6 @@ class SignupScreen extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          
           return SingleChildScrollView(
             child: Form(
               key: signup,
@@ -52,11 +59,13 @@ class SignupScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     CustomTextField(
+                      icon: Icons.person,
                       text: "Username",
                       controller: username,
                       validator: Validator().checkEmpty,
                     ),
                     CustomTextField(
+                      icon: Icons.key_outlined,
                       text: "Password",
                       controller: password,
                       validator: Validator(minLenth: 1).validatePassword,

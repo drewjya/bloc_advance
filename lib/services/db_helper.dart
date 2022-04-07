@@ -41,6 +41,12 @@ class DbHelper {
     return result.map((e) => CustomerReceive.fromMap(e)).toList();
   }
 
+  static Future<List> getUsers() async {
+    final db = await openDb();
+    final result = await db.query(UsersQuery.tableName);
+    return result;
+  }
+
   static Future<int?> login(UserModel userModel) async {
     final db = await openDb();
     List result = await db.query(UsersQuery.tableName,

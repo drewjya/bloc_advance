@@ -14,6 +14,12 @@ class WelcomeScreen extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthLogout) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("Logout Success"),
+              duration: Duration(milliseconds: 500),
+            ),
+          );
           Navigator.pushReplacementNamed(context, NameRoute.landing);
         }
       },
@@ -42,8 +48,13 @@ class WelcomeScreen extends StatelessWidget {
                       return WelcomeCustomers(user: state.user);
                     } else if (state is AuthLogout) {
                       return WelcomeCustomers(user: state.user);
+                    } else if (state is AuthLoading) {
+                      return WelcomeCustomers(user: state.usermodel!);
+                    } else if (state is AuthLoaded) {
+                      return WelcomeCustomers(user: state.user!);
+                    } else {
+                      return const Center(child: Text("Error"));
                     }
-                    return const Center(child: Text("Error"));
                   },
                 ),
               ),

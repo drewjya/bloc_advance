@@ -928,6 +928,10 @@ class _$CustomersStateTearOff {
       failed: failed,
     );
   }
+
+  CustomersSuccess success() {
+    return const CustomersSuccess();
+  }
 }
 
 /// @nodoc
@@ -942,6 +946,7 @@ mixin _$CustomersState {
     required TResult Function(int value) buttonVal,
     required TResult Function(File? text, int value, String? path) addImage,
     required TResult Function(bool failed) failed,
+    required TResult Function() success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -951,6 +956,7 @@ mixin _$CustomersState {
     TResult Function(int value)? buttonVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
+    TResult Function()? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -960,6 +966,7 @@ mixin _$CustomersState {
     TResult Function(int value)? buttonVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
+    TResult Function()? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -970,6 +977,7 @@ mixin _$CustomersState {
     required TResult Function(CustomersButton value) buttonVal,
     required TResult Function(CustomersAddButton value) addImage,
     required TResult Function(CustomersFailed value) failed,
+    required TResult Function(CustomersSuccess value) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -979,6 +987,7 @@ mixin _$CustomersState {
     TResult Function(CustomersButton value)? buttonVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -988,6 +997,7 @@ mixin _$CustomersState {
     TResult Function(CustomersButton value)? buttonVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1056,6 +1066,7 @@ class _$CustomersLoading implements CustomersLoading {
     required TResult Function(int value) buttonVal,
     required TResult Function(File? text, int value, String? path) addImage,
     required TResult Function(bool failed) failed,
+    required TResult Function() success,
   }) {
     return initial();
   }
@@ -1068,6 +1079,7 @@ class _$CustomersLoading implements CustomersLoading {
     TResult Function(int value)? buttonVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
+    TResult Function()? success,
   }) {
     return initial?.call();
   }
@@ -1080,6 +1092,7 @@ class _$CustomersLoading implements CustomersLoading {
     TResult Function(int value)? buttonVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
+    TResult Function()? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1096,6 +1109,7 @@ class _$CustomersLoading implements CustomersLoading {
     required TResult Function(CustomersButton value) buttonVal,
     required TResult Function(CustomersAddButton value) addImage,
     required TResult Function(CustomersFailed value) failed,
+    required TResult Function(CustomersSuccess value) success,
   }) {
     return initial(this);
   }
@@ -1108,6 +1122,7 @@ class _$CustomersLoading implements CustomersLoading {
     TResult Function(CustomersButton value)? buttonVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
   }) {
     return initial?.call(this);
   }
@@ -1120,6 +1135,7 @@ class _$CustomersLoading implements CustomersLoading {
     TResult Function(CustomersButton value)? buttonVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1204,6 +1220,7 @@ class _$CustomersLoaded implements CustomersLoaded {
     required TResult Function(int value) buttonVal,
     required TResult Function(File? text, int value, String? path) addImage,
     required TResult Function(bool failed) failed,
+    required TResult Function() success,
   }) {
     return loaded(customers);
   }
@@ -1216,6 +1233,7 @@ class _$CustomersLoaded implements CustomersLoaded {
     TResult Function(int value)? buttonVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
+    TResult Function()? success,
   }) {
     return loaded?.call(customers);
   }
@@ -1228,6 +1246,7 @@ class _$CustomersLoaded implements CustomersLoaded {
     TResult Function(int value)? buttonVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
+    TResult Function()? success,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1244,6 +1263,7 @@ class _$CustomersLoaded implements CustomersLoaded {
     required TResult Function(CustomersButton value) buttonVal,
     required TResult Function(CustomersAddButton value) addImage,
     required TResult Function(CustomersFailed value) failed,
+    required TResult Function(CustomersSuccess value) success,
   }) {
     return loaded(this);
   }
@@ -1256,6 +1276,7 @@ class _$CustomersLoaded implements CustomersLoaded {
     TResult Function(CustomersButton value)? buttonVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
   }) {
     return loaded?.call(this);
   }
@@ -1268,6 +1289,7 @@ class _$CustomersLoaded implements CustomersLoaded {
     TResult Function(CustomersButton value)? buttonVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1358,6 +1380,7 @@ class _$CustomersButton implements CustomersButton {
     required TResult Function(int value) buttonVal,
     required TResult Function(File? text, int value, String? path) addImage,
     required TResult Function(bool failed) failed,
+    required TResult Function() success,
   }) {
     return buttonVal(value);
   }
@@ -1370,6 +1393,7 @@ class _$CustomersButton implements CustomersButton {
     TResult Function(int value)? buttonVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
+    TResult Function()? success,
   }) {
     return buttonVal?.call(value);
   }
@@ -1382,6 +1406,7 @@ class _$CustomersButton implements CustomersButton {
     TResult Function(int value)? buttonVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
+    TResult Function()? success,
     required TResult orElse(),
   }) {
     if (buttonVal != null) {
@@ -1398,6 +1423,7 @@ class _$CustomersButton implements CustomersButton {
     required TResult Function(CustomersButton value) buttonVal,
     required TResult Function(CustomersAddButton value) addImage,
     required TResult Function(CustomersFailed value) failed,
+    required TResult Function(CustomersSuccess value) success,
   }) {
     return buttonVal(this);
   }
@@ -1410,6 +1436,7 @@ class _$CustomersButton implements CustomersButton {
     TResult Function(CustomersButton value)? buttonVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
   }) {
     return buttonVal?.call(this);
   }
@@ -1422,6 +1449,7 @@ class _$CustomersButton implements CustomersButton {
     TResult Function(CustomersButton value)? buttonVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
     required TResult orElse(),
   }) {
     if (buttonVal != null) {
@@ -1532,6 +1560,7 @@ class _$CustomersAddButton implements CustomersAddButton {
     required TResult Function(int value) buttonVal,
     required TResult Function(File? text, int value, String? path) addImage,
     required TResult Function(bool failed) failed,
+    required TResult Function() success,
   }) {
     return addImage(text, value, path);
   }
@@ -1544,6 +1573,7 @@ class _$CustomersAddButton implements CustomersAddButton {
     TResult Function(int value)? buttonVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
+    TResult Function()? success,
   }) {
     return addImage?.call(text, value, path);
   }
@@ -1556,6 +1586,7 @@ class _$CustomersAddButton implements CustomersAddButton {
     TResult Function(int value)? buttonVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
+    TResult Function()? success,
     required TResult orElse(),
   }) {
     if (addImage != null) {
@@ -1572,6 +1603,7 @@ class _$CustomersAddButton implements CustomersAddButton {
     required TResult Function(CustomersButton value) buttonVal,
     required TResult Function(CustomersAddButton value) addImage,
     required TResult Function(CustomersFailed value) failed,
+    required TResult Function(CustomersSuccess value) success,
   }) {
     return addImage(this);
   }
@@ -1584,6 +1616,7 @@ class _$CustomersAddButton implements CustomersAddButton {
     TResult Function(CustomersButton value)? buttonVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
   }) {
     return addImage?.call(this);
   }
@@ -1596,6 +1629,7 @@ class _$CustomersAddButton implements CustomersAddButton {
     TResult Function(CustomersButton value)? buttonVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
     required TResult orElse(),
   }) {
     if (addImage != null) {
@@ -1688,6 +1722,7 @@ class _$CustomersFailed implements CustomersFailed {
     required TResult Function(int value) buttonVal,
     required TResult Function(File? text, int value, String? path) addImage,
     required TResult Function(bool failed) failed,
+    required TResult Function() success,
   }) {
     return failed(this.failed);
   }
@@ -1700,6 +1735,7 @@ class _$CustomersFailed implements CustomersFailed {
     TResult Function(int value)? buttonVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
+    TResult Function()? success,
   }) {
     return failed?.call(this.failed);
   }
@@ -1712,6 +1748,7 @@ class _$CustomersFailed implements CustomersFailed {
     TResult Function(int value)? buttonVal,
     TResult Function(File? text, int value, String? path)? addImage,
     TResult Function(bool failed)? failed,
+    TResult Function()? success,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -1728,6 +1765,7 @@ class _$CustomersFailed implements CustomersFailed {
     required TResult Function(CustomersButton value) buttonVal,
     required TResult Function(CustomersAddButton value) addImage,
     required TResult Function(CustomersFailed value) failed,
+    required TResult Function(CustomersSuccess value) success,
   }) {
     return failed(this);
   }
@@ -1740,6 +1778,7 @@ class _$CustomersFailed implements CustomersFailed {
     TResult Function(CustomersButton value)? buttonVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
   }) {
     return failed?.call(this);
   }
@@ -1752,6 +1791,7 @@ class _$CustomersFailed implements CustomersFailed {
     TResult Function(CustomersButton value)? buttonVal,
     TResult Function(CustomersAddButton value)? addImage,
     TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -1768,4 +1808,133 @@ abstract class CustomersFailed implements CustomersState {
   @JsonKey(ignore: true)
   $CustomersFailedCopyWith<CustomersFailed> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CustomersSuccessCopyWith<$Res> {
+  factory $CustomersSuccessCopyWith(
+          CustomersSuccess value, $Res Function(CustomersSuccess) then) =
+      _$CustomersSuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$CustomersSuccessCopyWithImpl<$Res>
+    extends _$CustomersStateCopyWithImpl<$Res>
+    implements $CustomersSuccessCopyWith<$Res> {
+  _$CustomersSuccessCopyWithImpl(
+      CustomersSuccess _value, $Res Function(CustomersSuccess) _then)
+      : super(_value, (v) => _then(v as CustomersSuccess));
+
+  @override
+  CustomersSuccess get _value => super._value as CustomersSuccess;
+}
+
+/// @nodoc
+
+class _$CustomersSuccess implements CustomersSuccess {
+  const _$CustomersSuccess();
+
+  @override
+  String toString() {
+    return 'CustomersState.success()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is CustomersSuccess);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(List<CustomerReceive> customers) loaded,
+    required TResult Function(int value) buttonVal,
+    required TResult Function(File? text, int value, String? path) addImage,
+    required TResult Function(bool failed) failed,
+    required TResult Function() success,
+  }) {
+    return success();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<CustomerReceive> customers)? loaded,
+    TResult Function(int value)? buttonVal,
+    TResult Function(File? text, int value, String? path)? addImage,
+    TResult Function(bool failed)? failed,
+    TResult Function()? success,
+  }) {
+    return success?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<CustomerReceive> customers)? loaded,
+    TResult Function(int value)? buttonVal,
+    TResult Function(File? text, int value, String? path)? addImage,
+    TResult Function(bool failed)? failed,
+    TResult Function()? success,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomersLoading value) initial,
+    required TResult Function(CustomersLoaded value) loaded,
+    required TResult Function(CustomersButton value) buttonVal,
+    required TResult Function(CustomersAddButton value) addImage,
+    required TResult Function(CustomersFailed value) failed,
+    required TResult Function(CustomersSuccess value) success,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CustomersLoading value)? initial,
+    TResult Function(CustomersLoaded value)? loaded,
+    TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersAddButton value)? addImage,
+    TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomersLoading value)? initial,
+    TResult Function(CustomersLoaded value)? loaded,
+    TResult Function(CustomersButton value)? buttonVal,
+    TResult Function(CustomersAddButton value)? addImage,
+    TResult Function(CustomersFailed value)? failed,
+    TResult Function(CustomersSuccess value)? success,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CustomersSuccess implements CustomersState {
+  const factory CustomersSuccess() = _$CustomersSuccess;
 }

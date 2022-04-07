@@ -35,10 +35,18 @@ class AddScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is CustomersLoaded) {
             Navigator.pop(context);
-          }
-          if (state is CustomersFailed) {
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Please check your input")));
+          } else if (state is CustomersFailed) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text("Please check your input"),
+              backgroundColor: Colors.red,
+              duration: Duration(milliseconds: 500),
+            ));
+          } else if (state is CustomersSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: const Text("Success Add New Customers"),
+              backgroundColor: Colors.greenAccent.shade700,
+              duration: const Duration(milliseconds: 500),
+            ));
           }
         },
         child: Scaffold(
@@ -73,7 +81,7 @@ class AddScreen extends StatelessWidget {
           body: Padding(
             padding: const EdgeInsets.only(
               left: 25,
-              right: 75,
+              right: 25,
               top: 20,
               bottom: 20,
             ),
@@ -190,6 +198,7 @@ class Body extends StatelessWidget {
               children: [
                 CustomTextField(
                   text: "Name",
+                  icon: Icons.person,
                   controller: name,
                   autovalidateMode: AutovalidateMode.always,
                   enabled: (value == 1),
@@ -197,6 +206,7 @@ class Body extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: "No. HP",
+                  icon: Icons.phone,
                   controller: phoneNum,
                   autovalidateMode: AutovalidateMode.always,
                   enabled: (value == 1),
@@ -227,6 +237,7 @@ class Body extends StatelessWidget {
                   child: Column(
                     children: [
                       CustomTextField(
+                        icon: Icons.branding_watermark_rounded,
                         text: "Merk Kendaraan",
                         autovalidateMode: AutovalidateMode.always,
                         controller: merk,
@@ -234,6 +245,7 @@ class Body extends StatelessWidget {
                         validator: Validator().checkEmpty,
                       ),
                       CustomTextField(
+                        icon: Icons.motorcycle,
                         text: "Nama Model",
                         // enabled: false,
                         autovalidateMode: AutovalidateMode.always,
