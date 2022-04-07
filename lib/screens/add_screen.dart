@@ -26,11 +26,6 @@ class AddScreen extends StatelessWidget {
     final key1 = GlobalKey<FormState>();
     final key2 = GlobalKey<FormState>();
     final key3 = GlobalKey<FormState>();
-
-    // final keyDob = GlobalKey<FormState>();
-    // final keyMerk = GlobalKey<FormState>();
-    // final keyModel = GlobalKey<FormState>();
-
     return BlocListener<CustomersBloc, CustomersState>(
         listener: (context, state) {
           if (state is CustomersLoaded) {
@@ -50,11 +45,6 @@ class AddScreen extends StatelessWidget {
           }
         },
         child: Scaffold(
-          //   : BlocBuilder<CustomersBloc, CustomersState>(
-          //     builder: (context, state) {
-          //       if (state is CustomersButton) {
-          // final vair = state;
-          //       return
           appBar: AppBar(
             title: BlocBuilder<CustomersBloc, CustomersState>(
                 builder: (context, state) {
@@ -92,7 +82,6 @@ class AddScreen extends StatelessWidget {
             ),
             automaticallyImplyLeading: false,
           ),
-
           body: Padding(
             padding: const EdgeInsets.only(
               left: 25,
