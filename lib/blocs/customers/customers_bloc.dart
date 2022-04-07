@@ -61,7 +61,7 @@ class CustomersBloc extends Bloc<CustomersEvent, CustomersState> {
   void _onAddPicture(AddPicture event, Emitter<CustomersState> emit) async {
     final result = await pickImage();
     if (result != null &&
-        (state is CustomersButton || state is CustomersFailed)) {
+        (state is CustomersButton || state is CustomersAddButton)) {
       emit(
         CustomersAddButton(
           value: event.value,
@@ -70,8 +70,10 @@ class CustomersBloc extends Bloc<CustomersEvent, CustomersState> {
         ),
       );
     } else {
-      // emit(CustomersAddButton(value: event.value, text: null));
-      emit(const CustomersFailed());
+      emit(CustomersAddButton(
+        value: event.value,
+      ));
+      // emit(const CustomersFailed());
     }
   }
   // void _onUpdateCustomers(UpdateCustomers event, Emitter<CustomersState> emit) {

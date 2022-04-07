@@ -22,9 +22,9 @@ class Validator {
       return "Minimum Length is 10";
     } else if (value.contains(RegExp(r'[!@#$%^&*()?><}{:/"|=~,./+-]|[A-z]'))) {
       return "This field only receive number";
-    } else if ((value.length <= 10)) {
+    } else if ((value.length < 10)) {
       return "Minimum Length is 10";
-    } else if ((value.length >= 13)) {
+    } else if ((value.length > 13)) {
       return "Maximum Length is 13";
     }
 
