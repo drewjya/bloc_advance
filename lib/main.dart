@@ -1,6 +1,8 @@
 import 'package:bloc_advance/blocs/auth/auth_bloc.dart';
+import 'package:bloc_advance/blocs/button/button_bloc.dart';
 import 'package:bloc_advance/blocs/customers/customers_bloc.dart';
 import 'package:bloc_advance/constants/routes.dart';
+import 'package:bloc_advance/models/users_model.dart';
 import 'package:bloc_advance/screens/add_screen.dart';
 import 'package:bloc_advance/screens/landing_screen.dart';
 import 'package:bloc_advance/screens/login_screen.dart';
@@ -26,7 +28,11 @@ class MyApp extends StatelessWidget {
           create: (context) => CustomersBloc()..add(const LoadCustomers()),
         ),
         BlocProvider(
-          create: (context) => AuthBloc()..add(const LoadAuth()),
+          create: (context) => ButtonBloc()..add(const ButtonInitial(index: 1)),
+        ),
+        BlocProvider(
+          create: (context) => AuthBloc()
+            ..add(LoadAuth(user: UserModel(username: "", password: ""))),
         ),
       ],
       child: MaterialApp(

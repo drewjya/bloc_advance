@@ -1,4 +1,5 @@
 import 'package:bloc_advance/blocs/auth/auth_bloc.dart';
+import 'package:bloc_advance/blocs/button/button_bloc.dart';
 import 'package:bloc_advance/blocs/customers/customers_bloc.dart';
 import 'package:bloc_advance/constants/routes.dart';
 import 'package:bloc_advance/models/customers_receive.dart';
@@ -11,130 +12,145 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) {
-        if (state is AuthLogout) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("Logout Success"),
-              duration: Duration(milliseconds: 500),
-            ),
-          );
-          Navigator.pushReplacementNamed(context, NameRoute.landing);
-        }
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text("Data Konsumen"),
-              IconButton(
-                  onPressed: () {
-                    context.read<AuthBloc>().add(const LogoutAuth());
-                  },
-                  icon: const Icon(Icons.delete))
-            ],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text("Data Konsumen"),
+            BlocConsumer<AuthBloc, AuthState>(
+              listener: (context, state) {
+                if (state is AuthLogout) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Logout Success"),
+                      duration: Duration(milliseconds: 500),
+                    ),
+                  );
+                  context.read<AuthBloc>().add(LoadAuth(
+                        user: UserModel(
+                          username: "",
+                          password: "",
+                        ),
+                      ));
+                  Navigator.pushReplacementNamed(context, NameRoute.landing);
+                }
+              },
+              builder: (context, state) {
+                return IconButton(
+                    onPressed: () {
+                      context
+                          .read<AuthBloc>()
+                          .add(LogoutAuth(user: state.user));
+                    },
+                    icon: const Icon(Icons.delete));
+              },
+            )
+          ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          child: CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: BlocBuilder<AuthBloc, AuthState>(
-                  builder: (context, state) {
-                    if (state is AuthSuccess) {
-                      return WelcomeCustomers(user: state.user);
-                    } else if (state is AuthLogout) {
-                      return WelcomeCustomers(user: state.user);
-                    } else if (state is AuthLoading) {
-                      return WelcomeCustomers(user: state.usermodel!);
-                    } else if (state is AuthLoaded) {
-                      return WelcomeCustomers(user: state.user!);
-                    } else {
-                      return const Center(child: Text("Error"));
-                    }
-                  },
-                ),
-              ),
-              BlocBuilder<CustomersBloc, CustomersState>(
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: BlocBuilder<AuthBloc, AuthState>(
                 builder: (context, state) {
-                  if (state is CustomersLoading || state is CustomersButton) {
-                    return const SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: 200,
-                        width: double.infinity,
-                        child: Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                      ),
-                    );
-                  } else if (state is CustomersLoaded) {
-                    return (state.customers.isEmpty)
-                        ? const SliverToBoxAdapter(
-                            child: SizedBox(
-                              height: 200,
-                              width: double.infinity,
-                              child: Center(
-                                child: Text("There's No Data Yet"),
-                              ),
-                            ),
-                          )
-                        : SliverToBoxAdapter(
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 15, horizontal: 5),
-                              height: MediaQuery.of(context).size.height * 0.78,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
-                              child: ListView.builder(
-                                itemBuilder: (context, index) => ListItem(
-                                  width: MediaQuery.of(context).size.width,
-                                  length: state.customers.length,
-                                  customers: state.customers[index],
-                                  index: index,
-                                ),
-                                itemCount: state.customers.length,
-                              ),
-                            ),
-                          );
+                  
+                  if (state is AuthSuccess) {
+                    return WelcomeCustomers(user: state.user);
+                  } else if (state is AuthLogout) {
+                    return WelcomeCustomers(user: state.user);
+                  } else if (state is AuthLoading) {
+                    return WelcomeCustomers(user: state.user);
+                  } else if (state is AuthLoaded) {
+                    return WelcomeCustomers(user: state.user);
                   } else {
-                    return const SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: 200,
-                        width: double.infinity,
-                        child: Center(
-                          child: Text("Something Wrong"),
-                        ),
-                      ),
-                    );
+                    return const Center(child: Text("Error"));
                   }
                 },
               ),
-            ],
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            context.read<CustomersBloc>().add(const ButtonCustomers(value: 0));
-            Navigator.pushNamed(context, NameRoute.add);
-          },
-          child: const Icon(
-            Icons.add,
-            color: Colors.black,
-          ),
-          backgroundColor: Colors.white,
-          shape: CircleBorder(
-            side: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 2,
             ),
+            BlocBuilder<CustomersBloc, CustomersState>(
+              builder: (context, state) {
+                if (state is CustomersLoading) {
+                  return const SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: 200,
+                      width: double.infinity,
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                  );
+                } else if (state is CustomersLoaded) {
+                  return (state.customers.isEmpty)
+                      ? const SliverToBoxAdapter(
+                          child: SizedBox(
+                            height: 200,
+                            width: double.infinity,
+                            child: Center(
+                              child: Text("There's No Data Yet"),
+                            ),
+                          ),
+                        )
+                      : SliverToBoxAdapter(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 15, horizontal: 5),
+                            height: MediaQuery.of(context).size.height * 0.78,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            ),
+                            child: ListView.builder(
+                              itemBuilder: (context, index) => ListItem(
+                                width: MediaQuery.of(context).size.width,
+                                length: state.customers.length,
+                                customers: state.customers[index],
+                                index: index,
+                              ),
+                              itemCount: state.customers.length,
+                            ),
+                          ),
+                        );
+                } else {
+                  return const SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: 200,
+                      width: double.infinity,
+                      child: Center(
+                        child: Text("Something Wrong"),
+                      ),
+                    ),
+                  );
+                }
+              },
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.read<ButtonBloc>().add(const ButtonInitial(index: 1));
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            NameRoute.add,
+            (route) => false,
+          );
+        },
+        child: const Icon(
+          Icons.add,
+          color: Colors.black,
+        ),
+        backgroundColor: Colors.white,
+        shape: CircleBorder(
+          side: BorderSide(
+            color: Theme.of(context).primaryColor,
+            width: 2,
           ),
         ),
       ),
@@ -189,7 +205,7 @@ class ListItem extends StatelessWidget {
                       onPressed: () {
                         context
                             .read<CustomersBloc>()
-                            .add(DeleteCustomer(customerReceive: customers));
+                            .add(DeleteCustomers(customer: customers));
                       },
                       icon: const Icon(
                         Icons.delete,

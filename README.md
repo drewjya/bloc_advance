@@ -14,7 +14,6 @@ ___
 
 Project Ini saya buat dengan menggunakan bloc sebagai State Management dikarenakan tingkat project yang cukup kompleks sehingga membutuhkan State Management yang mumpuni dan powerful. Daftar package yang digunakan adalah sebagai berikut :
 - flutter_bloc
-- flutter_bloc
 - equatable
 - sqflite
 - freezed_annotation
@@ -24,6 +23,7 @@ Project Ini saya buat dengan menggunakan bloc sebagai State Management dikarenak
 - intl
 - build_runner
 - freezed
+- flutter_hooks
 
 ___
 

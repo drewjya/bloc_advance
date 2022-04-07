@@ -1,20 +1,23 @@
 part of 'customers_bloc.dart';
 
-@freezed
-class CustomersState with _$CustomersState {
-  const factory CustomersState.initial() = CustomersLoading;
-  const factory CustomersState.loaded(
-          {@Default(<Customers>[]) List<CustomerReceive> customers}) =
-      CustomersLoaded;
-  const factory CustomersState.buttonVal({@Default(0) int value}) =
-      CustomersButton;
-  const factory CustomersState.beforeVal({ required int value}) =
-      CustomersBefore;
-  const factory CustomersState.addImage(
-      {@Default(null) File? text,
-      required int value,
-      @Default(null) String? path}) = CustomersAddButton;
-  const factory CustomersState.failed({@Default(false) bool failed}) =
-      CustomersFailed;
-  const factory CustomersState.success() = CustomersSuccess;
+abstract class CustomersState extends Equatable {
+  const CustomersState();
+
+  @override
+  List<Object> get props => [];
+}
+
+class CustomersLoading extends CustomersState {}
+
+class CustomersSuccess extends CustomersState {}
+
+class CustomersFailed extends CustomersState {}
+
+class CustomersLoaded extends CustomersState {
+  final List<CustomerReceive> customers;
+  const CustomersLoaded({
+    required this.customers,
+  });
+  @override
+  List<Object> get props => [customers];
 }

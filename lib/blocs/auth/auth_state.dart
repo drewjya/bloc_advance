@@ -1,13 +1,79 @@
 part of 'auth_bloc.dart';
 
-@freezed
-class AuthState with _$AuthState {
-  const factory AuthState.initial({UserModel? usermodel}) = AuthLoading;
-  const factory AuthState.load({UserModel? user}) = AuthLoaded;
-  const factory AuthState.login({required UserModel user}) = AuthSubmit;
-  const factory AuthState.signup({required UserModel user}) = AuthSignup;
-  const factory AuthState.success({required UserModel user}) = AuthSuccess;
-  const factory AuthState.failed({String? message}) = AuthFailed;
-  const factory AuthState.logout({required UserModel user}) = AuthLogout;
-  const factory AuthState.autologin() = AuthAuto;
+abstract class AuthState extends Equatable {
+  final UserModel user;
+  final bool loggedIn;
+  const AuthState({required this.user, required this.loggedIn});
+  @override
+  List<Object> get props => [];
 }
+
+class AuthLoaded extends AuthState {
+  final UserModel userS;
+  final bool loggedInS;
+
+  const AuthLoaded({required this.userS, required this.loggedInS})
+      : super(user: userS, loggedIn: loggedInS);
+
+  // const AuthLoaded({required this.user, required this.loggedIn});
+  @override
+  List<Object> get props => [userS];
+}
+
+class AuthSuccess extends AuthState {
+  final UserModel userS;
+  const AuthSuccess({
+    required this.userS,
+  }) : super(user: userS, loggedIn: true);
+
+  @override
+  List<Object> get props => [userS];
+}
+
+class AuthFailed extends AuthState {
+  final UserModel userS;
+
+  const AuthFailed({
+    required this.userS,
+  }) : super(user: userS, loggedIn: false);
+  @override
+  List<Object> get props => [userS, loggedIn];
+}
+
+class AuthAuto extends AuthState {
+  final UserModel userS;
+
+  const AuthAuto({
+    required this.userS,
+  }) : super(user: userS, loggedIn: true);
+  @override
+  List<Object> get props => [userS, loggedIn];
+}
+class AuthLoading extends AuthState {
+  final UserModel userS;
+
+  const AuthLoading({
+    required this.userS,
+  }) : super(user: userS, loggedIn: true);
+  @override
+  List<Object> get props => [userS, loggedIn];
+}
+
+class AuthLogout extends AuthState {
+  final UserModel userS;
+
+  const AuthLogout({
+    required this.userS,
+  }) : super(user: userS, loggedIn: false);
+  @override
+  List<Object> get props => [userS, loggedIn];
+}
+
+// AuthLoading
+// AuthLoaded
+// AuthSubmit
+// AuthSignup
+// AuthAuto
+// AuthFailed
+// AuthLogout
+// AuthAuto

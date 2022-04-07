@@ -5,14 +5,15 @@ import 'package:bloc_advance/function/validator.dart';
 import 'package:bloc_advance/models/users_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends HookWidget {
   const SignupScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final username = TextEditingController();
-    final password = TextEditingController();
+    final username = useTextEditingController();
+    final password = useTextEditingController();
     final signup = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
@@ -41,10 +42,10 @@ class SignupScreen extends StatelessWidget {
             //     context, NameRoute.welcome, (route) => false);
           }
           if (state is AuthFailed) {
-            (state.message != null)
+            (!state.loggedIn)
                 ? ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(state.message.toString()),
+                    const SnackBar(
+                      content: Text("Failed Signup"),
                     ),
                   )
                 : null;

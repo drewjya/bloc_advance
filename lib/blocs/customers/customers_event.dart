@@ -1,21 +1,38 @@
 part of 'customers_bloc.dart';
 
-@freezed
-class CustomersEvent with _$CustomersEvent {
-  const factory CustomersEvent.loadCustomers(
-          {@Default(<CustomerReceive>[]) List<CustomerReceive> customers}) =
-      LoadCustomers;
-  const factory CustomersEvent.buttonState({@Default(1) int value}) =
-      ButtonCustomers;
-  const factory CustomersEvent.before({required int value}) =
-      BeforeCustomers;
-  const factory CustomersEvent.addCustomers({required Customers customer}) =
-      AddCustomers;
-  const factory CustomersEvent.addPicture({
-    required int value,
-  }) = AddPicture;
-  const factory CustomersEvent.deleteCustomers(
-      {required CustomerReceive customerReceive}) = DeleteCustomer;
-  // const factory CustomersEvent.updateCustomers({required Customers customer}) = UpdateCustomers;
-  // const factory CustomersEvent.deleteCustomers({required Customers customer}) = DeleteCustomers;
+abstract class CustomersEvent extends Equatable {
+  const CustomersEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class LoadCustomers extends CustomersEvent {
+  final List<CustomerReceive> customers;
+  const LoadCustomers({
+    this.customers = const <CustomerReceive>[],
+  });
+
+  @override
+  List<Object> get props => [customers];
+}
+
+class AddCustomers extends CustomersEvent {
+  final Customers customer;
+  const AddCustomers({
+    required this.customer,
+  });
+
+  @override
+  List<Object> get props => [customer];
+}
+
+class DeleteCustomers extends CustomersEvent {
+  final CustomerReceive customer;
+  const DeleteCustomers({
+    required this.customer,
+  });
+
+  @override
+  List<Object> get props => [customer];
 }

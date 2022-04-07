@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -46,7 +47,7 @@ class CustomTextField extends StatelessWidget {
   }
 }
 
-class PasswordTextField extends StatefulWidget {
+class PasswordTextField extends HookWidget {
   const PasswordTextField(
       {Key? key,
       this.controller,
@@ -69,44 +70,39 @@ class PasswordTextField extends StatefulWidget {
   final IconData icon;
 
   @override
-  State<PasswordTextField> createState() => _PasswordTextFieldState();
-}
-
-class _PasswordTextFieldState extends State<PasswordTextField> {
-  bool flag = true;
-  @override
   Widget build(BuildContext context) {
+    final flag = useState(true);
+    // bool flag = true;
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
       child: TextFormField(
-        controller: widget.controller,
-        validator: widget.validator,
-        enabled: widget.enabled,
-        autovalidateMode: widget.autovalidateMode,
-        keyboardType: widget.keyboardType,
+        controller: controller,
+        validator: validator,
+        enabled: enabled,
+        autovalidateMode: autovalidateMode,
+        keyboardType: keyboardType,
         decoration: InputDecoration(
           suffixIcon: GestureDetector(
             onTap: () {
-              flag = !flag;
-              setState(() {});
+              flag.value = !flag.value;
             },
-            child: Icon(
-                flag ? Icons.remove_red_eye : Icons.remove_red_eye_outlined),
+            child: Icon(flag.value
+                ? Icons.remove_red_eye
+                : Icons.remove_red_eye_outlined),
           ),
-          prefixIcon: Icon(widget.icon),
-          fillColor: (widget.enabled != null && widget.enabled!)
-              ? null
-              : Colors.grey.shade300,
-          filled: (widget.enabled == null) ? false : (!widget.enabled!),
-          labelText: widget.text,
+          prefixIcon: Icon(icon),
+          fillColor:
+              (enabled != null && enabled!) ? null : Colors.grey.shade300,
+          filled: (enabled == null) ? false : (!enabled!),
+          labelText: text,
         ),
-        obscureText: flag,
+        obscureText: flag.value,
       ),
     );
   }
 }
 
-class DatePicker extends StatefulWidget {
+class DatePicker extends HookWidget {
   final TextEditingController controller;
   final String? Function(String?) validator;
   final bool enabled;
@@ -116,22 +112,16 @@ class DatePicker extends StatefulWidget {
       required this.validator,
       required this.enabled})
       : super(key: key);
-
-  @override
-  State<DatePicker> createState() => _DatePickerState();
-}
-
-class _DatePickerState extends State<DatePicker> {
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
       child: TextFormField(
-        controller: widget.controller,
-        validator: widget.validator,
-        enabled: widget.enabled,
+        controller: controller,
+        validator: validator,
+        enabled: enabled,
         autovalidateMode: AutovalidateMode.always,
-        onTap: (widget.enabled)
+        onTap: (enabled)
             ? () {
                 FocusScope.of(context).requestFocus(FocusNode());
                 showDatePicker(
@@ -144,19 +134,18 @@ class _DatePickerState extends State<DatePicker> {
                   if (pickedDate == null) {
                     return;
                   }
-                  setState(() {
-                    // using state so that the UI will be rerendered when date is picked
 
-                    widget.controller.text =
-                        DateFormat("yyyy-MM-dd").format(pickedDate).toString();
+                  useState({
+                    controller.text =
+                        DateFormat("yyyy-MM-dd").format(pickedDate).toString()
                   });
                 });
               }
             : null,
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.calendar_month),
-          fillColor: (widget.enabled) ? null : Colors.grey.shade300,
-          filled: (widget.enabled) ? false : (!widget.enabled),
+          fillColor: (enabled) ? null : Colors.grey.shade300,
+          filled: (enabled) ? false : (!enabled),
           labelText: "Tanggal Lahir",
         ),
       ),

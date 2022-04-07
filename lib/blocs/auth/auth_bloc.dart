@@ -1,52 +1,36 @@
 import 'package:bloc/bloc.dart';
-import 'package:bloc_advance/function/encode_password.dart';
 import 'package:bloc_advance/models/users_model.dart';
 import 'package:bloc_advance/services/db_helper.dart';
 import 'package:bloc_advance/services/session_helper.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-
+import 'package:equatable/equatable.dart';
+import 'package:bloc_advance/function/encode_password.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
-part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc() : super(const AuthLoading()) {
+  AuthBloc()
+      : super(AuthLoaded(
+            userS: UserModel(username: "", password: ""), loggedInS: false)) {
     on<LoadAuth>(_onLoad);
-    on<SignupAuth>(_onSignup);
     on<LoginAuth>(_onLogin);
+    on<SignupAuth>(_onSignup);
     on<LogoutAuth>(_onLogout);
   }
+
   _onLoad(LoadAuth event, Emitter<AuthState> emit) async {
     var result = await SessionHelper.read();
     if (result != null) {
-      UserModel user = UserModel(
-          username: result.username, password: result.password, id: result.id);
+      UserModel user = result.copyWith()..id = result.id;
       var res = await DbHelper.login(user);
       if (res != null) {
-        emit(const AuthAuto());
-        emit(AuthSuccess(
-            user: UserModel(
-                username: result.username,
-                password: result.password.encode(),
-                id: res)));
+        emit(AuthAuto(
+            userS: user.copyWith()..password = user.password.encode()));
+        emit(AuthSuccess(userS: state.user));
       } else {
-        emit(const AuthLoaded());
+        emit(AuthLoaded(userS: state.user, loggedInS: false));
       }
     } else {
-      emit(const AuthLoaded());
-    }
-  }
-
-  _onSignup(SignupAuth event, Emitter<AuthState> emit) async {
-    if (state is AuthLoaded) {
-      UserModel user = event.user;
-      var res = await DbHelper.signUp(
-          event.user.copyWith()..password = user.password.encode());
-      user.id = res;
-      user.password = user.password.encode();
-      SessionHelper.write(user);
-      emit(const AuthLoading());
-      emit(AuthSuccess(user: user));
+      emit(AuthLoaded(userS: state.user, loggedInS: false));
     }
   }
 
@@ -55,37 +39,46 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       var value = await DbHelper.login(
           event.user.copyWith()..password = event.user.password.encode());
       if (value != null) {
-        final user = event.user;
-        int id = value;
-        await SessionHelper.write(UserModel(
-            username: user.username, password: user.password.encode(), id: id));
+        final user = event.user.copyWith(
+          password: event.user.password.encode(),
+          id: value,
+        );
+        await SessionHelper.write(user);
 
-        emit(const AuthLoading());
-
-        emit(AuthSuccess(
-            user: UserModel(
-                username: user.username,
-                password: user.password.encode(),
-                id: value)));
-        // emit(const AuthLoaded());
+        emit(AuthLoading(userS: user));
+        emit(AuthSuccess(userS: user));
       } else {
-        emit(const AuthFailed(message: "Username or Password Is Wrong"));
-        emit(const AuthLoaded());
+        emit(AuthFailed(userS: state.user));
+        emit(AuthLoaded(userS: state.user, loggedInS: false));
       }
     } else if (state is AuthSuccess) {
       emit(AuthSuccess(
-          user: event.user.copyWith()
+          userS: event.user.copyWith()
             ..password = event.user.password.encode()));
+    } else {
+      emit(AuthLoaded(userS: state.user, loggedInS: false));
+    }
+  }
+
+  _onSignup(SignupAuth event, Emitter<AuthState> emit) async {
+    if (state is AuthLoaded) {
+      UserModel user =
+          event.user.copyWith(password: event.user.password.encode());
+      var res = await DbHelper.signUp(user.copyWith(password: user.password));
+      user.id = res;
+      await SessionHelper.write(user);
+      emit(AuthLoading(userS: user));
+      emit(AuthSuccess(userS: user));
     }
   }
 
   _onLogout(LogoutAuth event, Emitter<AuthState> emit) async {
     if (state is AuthSuccess) {
-      var res = await SessionHelper.read();
       await SessionHelper.logout();
-      emit(AuthLogout(user: res!));
-      emit(AuthLoading(usermodel: res));
-      emit(AuthLoaded(user: res));
+      emit(AuthLogout(userS: event.user));
+      emit(AuthLoaded(userS: event.user, loggedInS: false));
+      // emit(AuthLoaded(
+      //     userS: UserModel(username: "", password: ""), loggedInS: false));
     }
   }
 }
