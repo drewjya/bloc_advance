@@ -63,6 +63,7 @@ class AddScreen extends HookWidget {
                     CustomTextField(
                       icon: Icons.person,
                       controller: name,
+                      text: "Nama",
                       autovalidateMode: AutovalidateMode.always,
                       validator: Validator().checkEmpty,
                       enabled: index == 1,
@@ -70,6 +71,7 @@ class AddScreen extends HookWidget {
                     CustomTextField(
                       icon: Icons.phone,
                       controller: phoneNum,
+                      text: "No Hp",
                       autovalidateMode: AutovalidateMode.always,
                       validator: Validator().checkNumberPhone,
                       enabled: index == 1,
