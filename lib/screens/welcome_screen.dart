@@ -56,7 +56,6 @@ class WelcomeScreen extends StatelessWidget {
             SliverToBoxAdapter(
               child: BlocBuilder<AuthBloc, AuthState>(
                 builder: (context, state) {
-                  
                   if (state is AuthSuccess) {
                     return WelcomeCustomers(user: state.user);
                   } else if (state is AuthLogout) {
@@ -176,7 +175,7 @@ class ListItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
       height: 70,
-      width: double.infinity,
+      width: width,
       child: SizedBox(
         height: 70,
         width: width,
@@ -186,30 +185,33 @@ class ListItem extends StatelessWidget {
           children: [
             Row(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "${customers.customerName} (${customers.customersNum})",
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    const Text(
-                      "Jl. MT Haryono no. 11 Jakarta Timur, 13330",
-                      style: TextStyle(fontSize: 14),
-                    ),
-                  ],
+                SizedBox(
+                  width: width * 0.67,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${customers.customerName} (${customers.customersNum})",
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      const Text(
+                        "Jl. MT Haryono no. 11 Jakarta Timur, 13330",
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
-                  width: width * 0.13,
-                  child: IconButton(
-                      onPressed: () {
+                  // width: width * 0.13,
+                  child: InkWell(
+                      onTap: () {
                         context
                             .read<CustomersBloc>()
                             .add(DeleteCustomers(customer: customers));
                       },
-                      icon: const Icon(
+                      child: const Icon(
                         Icons.delete,
-                        size: 18,
+                        size: 25,
                       )),
                 )
               ],

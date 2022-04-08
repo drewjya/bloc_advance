@@ -4,8 +4,6 @@ import 'package:bloc_advance/function/image_picker.dart';
 import 'package:flutter/material.dart';
 
 class ImagePicker extends StatefulWidget {
-
-
   const ImagePicker({
     Key? key,
     required this.keyForm,
@@ -79,7 +77,7 @@ class _ImagePickerState extends State<ImagePicker> {
                             decoration: BoxDecoration(
                                 color: Colors.grey,
                                 image: DecorationImage(
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.fill,
                                     image: FileImage(
                                         File(widget.controller.text)))),
                           ),

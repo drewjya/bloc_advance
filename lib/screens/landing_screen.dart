@@ -22,7 +22,6 @@ class LandingScreen extends StatelessWidget {
             Navigator.pushReplacementNamed(
               context,
               NameRoute.welcome,
-              
             );
           }
         },
@@ -34,12 +33,12 @@ class LandingScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  width: 200,
-                  height: 200,
+                  width: 400,
+                  height: 60,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(
-                          "https://cdn.discordapp.com/attachments/914874385834344500/961534469322461264/download.jpeg"),
+                      image: AssetImage("assets/imfi.jpeg"),
+                      fit: BoxFit.fill,
                     ),
                   ),
                 ),

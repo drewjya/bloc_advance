@@ -136,46 +136,93 @@ class AddScreen extends HookWidget {
                     return const SizedBox();
                   }
                 },
-              )
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
+                child: ButtonNext(
+                    key1: key1,
+                    key2: key2,
+                    pictureLoc: pictureLoc,
+                    name: name,
+                    phoneNum: phoneNum,
+                    date: date,
+                    model: model,
+                    merk: merk),
+              ),
             ],
           ),
         ),
-        floatingActionButton: BlocBuilder<ButtonBloc, ButtonState>(
-          builder: (context, state) {
-            return ElevatedButton(
-              onPressed: () {
-                if (state.initValue < 2 && key1.currentState!.validate()) {
-                  context.read<ButtonBloc>().add(
-                        ButtonPressedNext(index: state.initValue),
-                      );
-                } else if (state.initValue < 3 &&
-                    key2.currentState != null &&
-                    key2.currentState!.validate()) {
-                  context.read<ButtonBloc>().add(
-                        ButtonPressedNext(index: state.initValue),
-                      );
-                } else if (state.initValue == 3 && pictureLoc.text.isNotEmpty) {
-                  context.read<CustomersBloc>().add(
-                        AddCustomers(
-                          customer: Customers(
-                            customerName: name.text,
-                            customersNum: phoneNum.text,
-                            dob: date.text,
-                            model: model.text,
-                            merk: merk.text,
-                            picture: pictureLoc.text,
-                            createdBy: context.read<AuthBloc>().state.user.id!,
-                          ),
-                        ),
-                      );
-                }
-              },
-              child: Text((state.initValue != 3) ? "Next" : "Submit"),
-            );
-          },
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
+    );
+  }
+}
+
+class ButtonNext extends StatelessWidget {
+  const ButtonNext({
+    Key? key,
+    required this.key1,
+    required this.key2,
+    required this.pictureLoc,
+    required this.name,
+    required this.phoneNum,
+    required this.date,
+    required this.model,
+    required this.merk,
+  }) : super(key: key);
+
+  final GlobalKey<FormState> key1;
+  final GlobalKey<FormState> key2;
+  final TextEditingController pictureLoc;
+  final TextEditingController name;
+  final TextEditingController phoneNum;
+  final TextEditingController date;
+  final TextEditingController model;
+  final TextEditingController merk;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ButtonBloc, ButtonState>(
+      builder: (context, state) {
+        return ElevatedButton(
+          onPressed: () {
+            if (state.initValue < 2 && key1.currentState!.validate()) {
+              context.read<ButtonBloc>().add(
+                    ButtonPressedNext(index: state.initValue),
+                  );
+            } else if (state.initValue < 3 &&
+                key2.currentState != null &&
+                key2.currentState!.validate()) {
+              context.read<ButtonBloc>().add(
+                    ButtonPressedNext(index: state.initValue),
+                  );
+            } else if (state.initValue == 3 && pictureLoc.text.isNotEmpty) {
+              context.read<CustomersBloc>().add(
+                    AddCustomers(
+                      customer: Customers(
+                        customerName: name.text,
+                        customersNum: phoneNum.text,
+                        dob: date.text,
+                        model: model.text,
+                        merk: merk.text,
+                        picture: pictureLoc.text,
+                        createdBy: context.read<AuthBloc>().state.user.id!,
+                      ),
+                    ),
+                  );
+            }
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: Text(
+              (state.initValue != 3) ? "Next" : "Submit",
+              style: const TextStyle(
+                fontSize: 16,
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
@@ -191,7 +238,10 @@ class TitleProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ButtonBloc, ButtonState>(builder: (context, state) {
-      return Text(title[state.initValue - 1]);
+      return Text(
+        title[state.initValue - 1],
+        style: const TextStyle(fontSize: 20),
+      );
     });
   }
 }
