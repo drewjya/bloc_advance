@@ -16,14 +16,12 @@ Project Ini saya buat dengan menggunakan bloc sebagai State Management dikarenak
 - flutter_bloc
 - equatable
 - sqflite
-- freezed_annotation
 - hive
 - hive_flutter
 - file_picker
 - intl
-- build_runner
-- freezed
-- flutter_hooks
+- flutter hooks
+
 
 ___
 
@@ -34,4 +32,3 @@ Daftar Device yang didukung adalah
 ___
 Hal yang belum dilakukan adalah
 - Testing
-- Change BlocBuilder To BlocSelector or Make New Bloc for AppBar title
